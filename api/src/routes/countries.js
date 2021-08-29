@@ -35,42 +35,43 @@ router.get("/", async (req, res) => {
 
 router.get("/order/:population", async (req, res) => {
   const { population } = req.params;
+  try {
+    if (population == "Descendente") {
+      const desc = await Country.findAll({
+        order: [["population", "DESC"]],
+      });
 
-  if (population == "Descendente") {
-    const asc = await Country.findAll();
-    if (asc.length > 1) {
-      for (let i = 0; i < asc.length; i++) {
-        var resultado = asc.sort(function (a, b) {
-          if (a.population > b.population) {
-            return 1;
-          }
-          if (a.population < b.population) {
-            return -1;
-          }
-
-          return 0;
-        });
-      }
+      res.status(200).json(desc);
     }
-    res.status(200).json(resultado);
+    if (population == "Ascendente") {
+      const asc = await Country.findAll({
+        order: [["population", "ASC"]],
+      });
+
+      res.status(200).json(asc);
+    }
+  } catch (err) {
+    res.json({ error: err });
   }
-  if (population == "Ascendente") {
-    const asc = await Country.findAll();
-    if (asc.length > 1) {
-      for (let i = 0; i < asc.length; i++) {
-        var resultado = asc.sort(function (a, b) {
-          if (a.population > b.population) {
-            return -1;
-          }
-          if (a.population < b.population) {
-            return 1;
-          }
+});
 
-          return 0;
-        });
-      }
+router.get("/order/alphabetic/:alphabetic", async (req, res) => {
+  const { alphabetic } = req.params;
+  try {
+    if (alphabetic == "A-Z") {
+      const alph = await Country.findAll({
+        order: [["name", "ASC"]],
+      });
+      res.status(200).json(alph);
     }
-    res.status(200).json(resultado);
+    if (alphabetic == "Z-A") {
+      const alph = await Country.findAll({
+        order: [["name", "DESC"]],
+      });
+      res.status(200).json(alph);
+    }
+  } catch (err) {
+    res.json({ error: err });
   }
 });
 
@@ -78,7 +79,7 @@ router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
   const resultado = await Country.findByPk(id, { include: Activity });
-  res.json({ resultado });
+  res.status(200).json({ resultado });
 });
 
 router.get("/search/:name", async (req, res) => {
