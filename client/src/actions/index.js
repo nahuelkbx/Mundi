@@ -24,4 +24,15 @@ export function getDetails(id) {
   };
 }
 
-export function filterBy() {}
+export function Order(order) {
+  return function (dispatch) {
+    return axios
+      .get("http://localhost:3001/api/countries/order/" + order.value)
+      .then((country) => {
+        dispatch({
+          type: "ORDER",
+          payload: country,
+        });
+      });
+  };
+}

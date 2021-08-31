@@ -5,6 +5,7 @@ import Country from "../Country/Country.jsx";
 
 function Countries() {
   const country = useSelector((state) => state.country);
+
   return (
     <div className={styles.contenedor}>
       {country &&

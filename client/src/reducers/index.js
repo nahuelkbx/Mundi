@@ -16,6 +16,12 @@ function rootReducer(state = initialState, action) {
         countryDetail: action.payload.data,
       };
     }
+    case "ORDER": {
+      return {
+        ...state,
+        country: action.payload.data,
+      };
+    }
     default:
       return state;
   }

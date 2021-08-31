@@ -15,35 +15,27 @@ router.get("/", async (req, res) => {
 router.get("/order/:population", async (req, res) => {
   const { population } = req.params;
   try {
-    if (population == "Descendente") {
+    if (population == "Asc") {
       const desc = await Country.findAll({
         order: [["population", "DESC"]],
       });
 
       res.status(200).json(desc);
     }
-    if (population == "Ascendente") {
+    if (population == "Desc") {
       const asc = await Country.findAll({
         order: [["population", "ASC"]],
       });
 
       res.status(200).json(asc);
     }
-  } catch (err) {
-    res.json({ error: err });
-  }
-});
-
-router.get("/order/alphabetic/:alphabetic", async (req, res) => {
-  const { alphabetic } = req.params;
-  try {
-    if (alphabetic == "A-Z") {
+    if (population == "A-Z") {
       const alph = await Country.findAll({
         order: [["name", "ASC"]],
       });
       res.status(200).json(alph);
     }
-    if (alphabetic == "Z-A") {
+    if (population == "Z-A") {
       const alph = await Country.findAll({
         order: [["name", "DESC"]],
       });

@@ -8,7 +8,7 @@ import CountriesDetails from "./components/CountriesDetails/CountriesDetails";
 function App() {
   return (
     <div className="App">
-      <Route path="/" component={Nav} />
+      <Route path="/home" component={Nav} />
 
       <Route exact path="/" component={Landing} />
 
