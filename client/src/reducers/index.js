@@ -1,5 +1,24 @@
-const initialState = {};
+const initialState = {
+  country: [],
+  countryDetail: [],
+};
 
-function rootReducer(state = initialState, action) {}
+function rootReducer(state = initialState, action) {
+  switch (action.type) {
+    case "GET_COUNTRY":
+      return {
+        ...state,
+        country: action.payload.data,
+      };
+    case "GET_DETAILS": {
+      return {
+        ...state,
+        countryDetail: action.payload.data,
+      };
+    }
+    default:
+      return state;
+  }
+}
 
 export default rootReducer;
