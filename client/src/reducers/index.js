@@ -22,6 +22,12 @@ function rootReducer(state = initialState, action) {
         country: action.payload.data,
       };
     }
+    case "FILTER": {
+      return {
+        ...state,
+        country: action.payload.data,
+      };
+    }
     default:
       return state;
   }

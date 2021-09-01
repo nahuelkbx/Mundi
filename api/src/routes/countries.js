@@ -12,6 +12,20 @@ router.get("/", async (req, res) => {
   }
 });
 
+router.get("/filter/:continent", async (req, res) => {
+  const { continent } = req.params;
+
+  if (continent) {
+    const actividad = await Country.findAll({
+      where: {
+        continent,
+      },
+    });
+    return res.status(200).json(actividad);
+  }
+  res.status(404).json({ error: "Debe seleccionar una temporada" });
+});
+
 router.get("/order/:population", async (req, res) => {
   const { population } = req.params;
   try {
