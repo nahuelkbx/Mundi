@@ -38,7 +38,6 @@ export function Order(order) {
 }
 
 export function Filter(continent) {
-  console.log(continent);
   return function (dispatch) {
     return axios
       .get("http://localhost:3001/api/countries/filter/" + continent)

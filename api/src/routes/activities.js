@@ -27,11 +27,19 @@ router.get("/order/:season", async (req, res) => {
 
 router.post("/add", async (req, res) => {
   const { aID, cID } = req.body;
-  if ((aID, cID)) {
-    const pais = await Country.findByPk(cID);
-    return res.json(await pais.addActivity(aID));
+  if (Array.isArray(cID) === false) {
+    if (aID) {
+      const pais = await Country.findByPk(cID);
+      return res.json(await pais.addActivity(aID));
+    }
+    res.json({ error: "Datos Invalidos" });
+  } else if (Array.isArray(cID) === true) {
+    if (aID) {
+      const actividad = await Activity.findByPk(aID);
+      return res.json(await actividad.addCountries(cID));
+    }
+    res.json({ error: "Datos Invalidos" });
   }
-  res.json({ error: "Datos Invalidos" });
 });
 
 router.post("/activity", async (req, res) => {

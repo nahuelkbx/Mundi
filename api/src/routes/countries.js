@@ -5,7 +5,10 @@ const { Country, Activity } = require("../db.js");
 
 router.get("/", async (req, res) => {
   try {
-    const DBpais = await Country.findAll({ include: Activity });
+    const DBpais = await Country.findAll({
+      include: Activity,
+      order: [["name", "ASC"]],
+    });
     res.status(200).send(DBpais);
   } catch (err) {
     res.status(404).json({ error: err });

@@ -1,5 +1,4 @@
 import React from "react";
-import CountriesDetails from "../CountriesDetails/CountriesDetails";
 import styles from "../Country/Country.module.css";
 import { Link } from "react-router-dom";
 function Country({
