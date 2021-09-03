@@ -53,3 +53,21 @@ export function Filter(continent, page) {
       });
   };
 }
+
+export function searchName(name, page) {
+  return function (dispatch) {
+    return axios
+      .get(
+        "http://localhost:3001/api/countries/find/name?name=" +
+          name +
+          "&page=" +
+          page
+      )
+      .then((name) => {
+        dispatch({
+          type: "SEARCH_NAME",
+          payload: name,
+        });
+      });
+  };
+}

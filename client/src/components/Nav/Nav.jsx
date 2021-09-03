@@ -1,16 +1,16 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { Order } from "../../actions/index";
 import { withRouter } from "react-router-dom";
 import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { searchName } from "../../actions";
 
 function Nav(props) {
   const dispatch = useDispatch();
   const [state, setState] = useState({
-    value: "A-Z",
+    title: "",
   });
 
-  function handleChange(e) {
+  function Ordenado(e) {
     if (e.target.value === "A-Z") {
       return props.history.push(`/orderby/${e.target.value}`);
     }
@@ -32,12 +32,24 @@ function Nav(props) {
     props.history.push(`/filterby/${e.target.value}`);
   }
 
-  useEffect(() => {
-    dispatch(Order(state, 1));
-  }, [state.value]);
+  function handleOnChange(e) {
+    e.preventDefault();
+    props.history.push(`/search/${state.title}`);
+    dispatch(searchName(state.title, 1));
+  }
+
   return (
     <div>
-      <select name="selectBox" onChange={(e) => handleChange(e)}>
+      <form action="" onSubmit={(e) => handleOnChange(e)}>
+        <input
+          type="text"
+          placeholder="Search"
+          onChange={(e) => setState({ title: e.target.value })}
+        />
+        <input type="submit" value="Search" />
+      </form>
+
+      <select name="selectBox" onChange={(e) => Ordenado(e)}>
         <option value="A-Z">A-Z</option>
         <option value="Z-A">Z-A</option>
         <option value="Asc">PopulationUP</option>

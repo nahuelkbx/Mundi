@@ -21,6 +21,8 @@ function App() {
 
       <Route exact path="/orderby/:order" render={() => <Countries />} />
 
+      <Route exact path="/search/:country" render={() => <Countries />} />
+
       <Route exact path="/createactivity" component={Activity} />
 
       <Route path="/" component={Footer} />

@@ -22,11 +22,10 @@ function Countries() {
       dispatch(Order(path.slice(9), 1));
     }
   }, [path]);
-
   return (
     <div className={styles.contenedor}>
       {state.country.rows &&
-        state.country.rows.map((c, i) => (
+        state.country.rows.map((c) => (
           <Country
             key={c.id}
             id={c.id}

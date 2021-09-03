@@ -28,6 +28,12 @@ function rootReducer(state = initialState, action) {
         country: action.payload.data,
       };
     }
+    case "SEARCH_NAME": {
+      return {
+        ...state,
+        country: action.payload.data,
+      };
+    }
     default:
       return state;
   }

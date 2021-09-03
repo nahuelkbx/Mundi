@@ -85,13 +85,15 @@ router.get("/searchby/:id", async (req, res) => {
   res.status(200).json({ resultado });
 });
 
-router.get("/search/nombre", async (req, res) => {
-  const { name } = req.query;
+router.get("/find/name", async (req, res) => {
+  const { name, page } = req.query;
   if (name) {
-    const resultado = await Country.findAll({
+    const resultado = await Country.findAndCountAll({
       where: {
         name: { [Op.iLike]: `%${name}%` },
       },
+      offset: (page - 1) * 10,
+      limit: 10,
     });
     if (resultado === null) {
       return res.status(404).json({ error: "No hay un país correspondiente" });

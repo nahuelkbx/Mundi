@@ -1,5 +1,5 @@
 import React from "react";
-import { Order, Filter, getCountry } from "../../actions/index";
+import { Order, Filter, getCountry, searchName } from "../../actions/index";
 import { useSelector, useDispatch } from "react-redux";
 export default function Pagination() {
   const pages = useSelector((state) => state.country.count);
@@ -21,6 +21,10 @@ export default function Pagination() {
     }
     if (path.slice(1) === "home") {
       dispatch(getCountry(page));
+    }
+    if (path.slice(1, 7) === "search") {
+      let res = path.slice(8);
+      dispatch(searchName(res, page));
     }
   }
 
