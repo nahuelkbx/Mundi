@@ -2,7 +2,6 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { Order } from "../../actions/index";
 import { withRouter } from "react-router-dom";
-import { Filter } from "../../actions/index";
 import { useState, useEffect } from "react";
 
 function Nav(props) {
@@ -12,23 +11,29 @@ function Nav(props) {
   });
 
   function handleChange(e) {
-    setState({
-      value: e.target.value,
-    });
-    props.history.push("/home");
+    if (e.target.value === "A-Z") {
+      return props.history.push(`/orderby/${e.target.value}`);
+    }
+    if (e.target.value === "Z-A") {
+      return props.history.push(`/orderby/${e.target.value}`);
+    }
+    if (e.target.value === "Asc") {
+      return props.history.push(`/orderby/${e.target.value}`);
+    }
+    if (e.target.value === "Desc") {
+      return props.history.push(`/orderby/${e.target.value}`);
+    }
   }
 
   function Filtrado(e) {
     if (e.target.value === "home") {
       return props.history.push(`/${e.target.value}`);
     }
-    props.history.push(`/home/${e.target.value}`);
-    // let history = useHistory();
-    // history.push(`/filterby/${e.target.value}`)
+    props.history.push(`/filterby/${e.target.value}`);
   }
 
   useEffect(() => {
-    dispatch(Order(state));
+    dispatch(Order(state, 1));
   }, [state.value]);
   return (
     <div>

@@ -3,58 +3,73 @@ const router = express.Router();
 const { Op } = require("sequelize");
 const { Country, Activity } = require("../db.js");
 
-router.get("/", async (req, res) => {
+router.get("/:page", async (req, res) => {
+  const { page } = req.params;
   try {
-    const DBpais = await Country.findAll({
-      include: Activity,
-      order: [["name", "ASC"]],
-    });
-    res.status(200).send(DBpais);
+    {
+      const DBpais = await Country.findAndCountAll({
+        include: [Activity],
+        order: [["name", "ASC"]],
+        offset: (page - 1) * 10,
+        limit: 10,
+      });
+      res.status(200).send(DBpais);
+    }
   } catch (err) {
     res.status(404).json({ error: err });
   }
 });
 
-router.get("/filter/:continent", async (req, res) => {
-  const { continent } = req.params;
+router.get("/filter/:continent/:page", async (req, res) => {
+  const { continent, page } = req.params;
 
   if (continent) {
-    const actividad = await Country.findAll({
+    const actividad = await Country.findAndCountAll({
       where: {
         continent,
       },
+      offset: (page - 1) * 10,
+      limit: 10,
     });
     return res.status(200).json(actividad);
   }
   res.status(404).json({ error: "Debe seleccionar una temporada" });
 });
 
-router.get("/order/:population", async (req, res) => {
-  const { population } = req.params;
+router.get("/order/:population/:page", async (req, res) => {
+  const { population, page } = req.params;
   try {
     if (population == "Asc") {
-      const desc = await Country.findAll({
+      const desc = await Country.findAndCountAll({
         order: [["population", "DESC"]],
+        offset: (page - 1) * 10,
+        limit: 10,
       });
 
       res.status(200).json(desc);
     }
     if (population == "Desc") {
-      const asc = await Country.findAll({
+      const asc = await Country.findAndCountAll({
         order: [["population", "ASC"]],
+        offset: (page - 1) * 10,
+        limit: 10,
       });
 
       res.status(200).json(asc);
     }
     if (population == "A-Z") {
-      const alph = await Country.findAll({
+      const alph = await Country.findAndCountAll({
         order: [["name", "ASC"]],
+        offset: (page - 1) * 10,
+        limit: 10,
       });
       res.status(200).json(alph);
     }
     if (population == "Z-A") {
-      const alph = await Country.findAll({
+      const alph = await Country.findAndCountAll({
         order: [["name", "DESC"]],
+        offset: (page - 1) * 10,
+        limit: 10,
       });
       res.status(200).json(alph);
     }
@@ -63,7 +78,7 @@ router.get("/order/:population", async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/searchby/:id", async (req, res) => {
   const { id } = req.params;
 
   const resultado = await Country.findByPk(id, { include: Activity });

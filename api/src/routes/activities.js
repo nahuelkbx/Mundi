@@ -25,35 +25,27 @@ router.get("/order/:season", async (req, res) => {
   res.status(404).json({ error: "Debe seleccionar una temporada" });
 });
 
-router.post("/add", async (req, res) => {
-  const { aID, cID } = req.body;
-  if (Array.isArray(cID) === false) {
-    if (aID) {
-      const pais = await Country.findByPk(cID);
-      return res.json(await pais.addActivity(aID));
-    }
-    res.json({ error: "Datos Invalidos" });
-  } else if (Array.isArray(cID) === true) {
-    if (aID) {
-      const actividad = await Activity.findByPk(aID);
-      return res.json(await actividad.addCountries(cID));
-    }
-    res.json({ error: "Datos Invalidos" });
-  }
-});
-
 router.post("/activity", async (req, res) => {
-  const { name, dificulty, duration, season } = req.body;
+  const { name, dificulty, duration, season, countryID } = req.body;
   if (name && dificulty && duration && season) {
-    const actividad = await Activity.create({
+    var actividad = await Activity.create({
       name,
       dificulty,
       season,
       duration,
     });
-    res.status(200).json(actividad);
-  } else {
-    res.status(400).json({ error: "Faltan parametros" });
+  }
+
+  if (Array.isArray(countryID) === false) {
+    if (actividad) {
+      pais = await Country.findByPk(countryID);
+      return res.json(await pais.addActivity(actividad));
+    }
+  }
+  if (Array.isArray(countryID) === true) {
+    if (actividad) {
+      return res.json(await actividad.addCountries(countryID));
+    }
   }
 });
 
