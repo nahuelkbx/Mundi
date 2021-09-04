@@ -81,10 +81,10 @@ A continuación se detallaran los requerimientos mínimos para la aprobación de
 __IMPORTANTE__: No se permitirá utilizar librerías externas para aplicar estilos a la aplicación. Tendrán que utilizar CSS con algunas de las opciones que vimos en dicha clase (CSS puro, CSS Modules o Styled Components)
 
 #### Tecnologías necesarias:
-- [ ] React
-- [ ] Redux
-- [ ] Express
-- [ ] Sequelize - Postgres
+- [X] React
+- [X] Redux
+- [X] Express
+- [X] Sequelize - Postgres
 
 #### Frontend
 
@@ -114,13 +114,13 @@ __Ruta de detalle de país__: debe contener
 - [X] Actividades turísticas con toda su información asociada
 
 __Ruta de creación de actividad turística__: debe contener
-- [ ] Un formulario __controlado__ con los siguientes campos
+- [X] Un formulario __controlado__ con los siguientes campos
   - Nombre
   - Dificultad
   - Duración
   - Temporada
-- [ ] Posibilidad de seleccionar/agregar varios países en simultaneo
-- [ ] Botón/Opción para crear una nueva actividad turística
+- [X] Posibilidad de seleccionar/agregar varios países en simultaneo
+- [X] Botón/Opción para crear una nueva actividad turística
 
 #### Base de datos
 
