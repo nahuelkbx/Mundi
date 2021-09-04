@@ -1,16 +1,29 @@
 import axios from "axios";
 
 export function getCountry(page) {
-  return function (dispatch) {
-    return axios
-      .get("http://localhost:3001/api/countries/" + page)
-      .then((country) => {
-        dispatch({
-          type: "GET_COUNTRY",
-          payload: country,
+  if (page) {
+    return function (dispatch) {
+      return axios
+        .get("http://localhost:3001/api/countries/?page=" + page)
+        .then((country) => {
+          dispatch({
+            type: "GET_COUNTRY",
+            payload: country,
+          });
         });
-      });
-  };
+    };
+  } else if (!page) {
+    return function (dispatch) {
+      return axios
+        .get("http://localhost:3001/api/countries/")
+        .then((country) => {
+          dispatch({
+            type: "GET_COUNTRY",
+            payload: country,
+          });
+        });
+    };
+  }
 }
 
 export function getDetails(id) {
@@ -69,5 +82,28 @@ export function searchName(name, page) {
           payload: name,
         });
       });
+  };
+}
+export function searchActivity(season) {
+  return function (dispatch) {
+    return axios
+      .get("http://localhost:3001/api/activities/order/" + season)
+      .then((act) => {
+        dispatch({
+          type: "SEARCH_ACTIVITY",
+          payload: act,
+        });
+      });
+  };
+}
+
+export function postActivity(payload) {
+  console.log(payload);
+  return async function (dispatch) {
+    const response = await axios.post(
+      "http://localhost:3001/api/activities/activity",
+      payload
+    );
+    return response;
   };
 }

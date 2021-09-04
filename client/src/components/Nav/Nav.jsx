@@ -1,6 +1,6 @@
 import React from "react";
 import { withRouter } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchName } from "../../actions";
 
@@ -12,16 +12,16 @@ function Nav(props) {
 
   function Ordenado(e) {
     if (e.target.value === "A-Z") {
-      return props.history.push(`/orderby/${e.target.value}`);
+      return props.history.push(`/home/orderby/${e.target.value}`);
     }
     if (e.target.value === "Z-A") {
-      return props.history.push(`/orderby/${e.target.value}`);
+      return props.history.push(`/home/orderby/${e.target.value}`);
     }
     if (e.target.value === "Asc") {
-      return props.history.push(`/orderby/${e.target.value}`);
+      return props.history.push(`/home/orderby/${e.target.value}`);
     }
     if (e.target.value === "Desc") {
-      return props.history.push(`/orderby/${e.target.value}`);
+      return props.history.push(`/home/orderby/${e.target.value}`);
     }
   }
 
@@ -29,17 +29,28 @@ function Nav(props) {
     if (e.target.value === "home") {
       return props.history.push(`/${e.target.value}`);
     }
-    props.history.push(`/filterby/${e.target.value}`);
+    props.history.push(`/home/filterby/${e.target.value}`);
   }
 
   function handleOnChange(e) {
     e.preventDefault();
-    props.history.push(`/search/${state.title}`);
+    props.history.push(`/home/search/${state.title}`);
     dispatch(searchName(state.title, 1));
+  }
+
+  function searchActivity(e) {
+    props.history.push(`/home/activity/${e.target.value}`);
   }
 
   return (
     <div>
+      <select name="selectBox3" onChange={(e) => searchActivity(e)}>
+        <option value="summer">Summer</option>
+        <option value="winter">Winter</option>
+        <option value="spring">Spring</option>
+        <option value="fall">Fall</option>
+      </select>
+
       <form action="" onSubmit={(e) => handleOnChange(e)}>
         <input
           type="text"

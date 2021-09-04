@@ -1,6 +1,7 @@
 const initialState = {
   country: [],
   countryDetail: [],
+  activities: [],
 };
 
 function rootReducer(state = initialState, action) {
@@ -32,6 +33,17 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         country: action.payload.data,
+      };
+    }
+    case "SEARCH_ACTIVITY": {
+      return {
+        ...state,
+        activities: action.payload.data,
+      };
+    }
+    case "POST_ACTIVITY": {
+      return {
+        ...state,
       };
     }
     default:

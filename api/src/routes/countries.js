@@ -3,17 +3,25 @@ const router = express.Router();
 const { Op } = require("sequelize");
 const { Country, Activity } = require("../db.js");
 
-router.get("/:page", async (req, res) => {
-  const { page } = req.params;
+router.get("/", async (req, res) => {
+  const { page } = req.query;
   try {
     {
-      const DBpais = await Country.findAndCountAll({
-        include: [Activity],
-        order: [["name", "ASC"]],
-        offset: (page - 1) * 10,
-        limit: 10,
-      });
-      res.status(200).send(DBpais);
+      if (page) {
+        const DBpais = await Country.findAndCountAll({
+          include: [Activity],
+          order: [["name", "ASC"]],
+          offset: (page - 1) * 10,
+          limit: 10,
+        });
+        res.status(200).send(DBpais);
+      } else if (!page) {
+        const DBpais = await Country.findAndCountAll({
+          include: [Activity],
+          order: [["name", "ASC"]],
+        });
+        res.status(200).send(DBpais);
+      }
     }
   } catch (err) {
     res.status(404).json({ error: err });

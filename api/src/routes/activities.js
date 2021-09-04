@@ -26,23 +26,22 @@ router.get("/order/:season", async (req, res) => {
 });
 
 router.post("/activity", async (req, res) => {
-  const { name, dificulty, duration, season, countryID } = req.body;
-  if (name && dificulty && duration && season) {
+  const { name, difficulty, duration, season, countryID } = req.body;
+  if (name && difficulty && duration && season) {
     var actividad = await Activity.create({
       name,
-      dificulty,
+      difficulty,
       season,
       duration,
     });
   }
 
-  if (Array.isArray(countryID) === false) {
+  if (countryID.length === 1) {
     if (actividad) {
-      pais = await Country.findByPk(countryID);
-      return res.json(await pais.addActivity(actividad));
+      return res.json(await actividad.addCountry(countryID));
     }
   }
-  if (Array.isArray(countryID) === true) {
+  if (countryID.length > 1) {
     if (actividad) {
       return res.json(await actividad.addCountries(countryID));
     }

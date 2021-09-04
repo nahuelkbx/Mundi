@@ -11,19 +11,19 @@ export default function Pagination() {
   }
 
   function ChangePage(page) {
-    if (path.slice(1, 7) === "filter") {
-      let res = path.slice(10);
+    if (path.slice(6, 12) === "filter") {
+      let res = path.slice(15);
       dispatch(Filter(res, page));
     }
-    if (path.slice(1, 6) === "order") {
-      let res = path.slice(9);
+    if (path.slice(6, 11) === "order") {
+      let res = path.slice(14);
       dispatch(Order(res, page));
     }
     if (path.slice(1) === "home") {
       dispatch(getCountry(page));
     }
-    if (path.slice(1, 7) === "search") {
-      let res = path.slice(8);
+    if (path.slice(6, 12) === "search") {
+      let res = path.slice(13);
       dispatch(searchName(res, page));
     }
   }
