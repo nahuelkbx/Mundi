@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "../Countries/Countries.module.css";
 import { useSelector, useDispatch } from "react-redux";
-import { Order, getCountry, Filter, searchActivity } from "../../actions/index";
+import { Order, getCountry, Filter } from "../../actions/index";
 import { useEffect } from "react";
 import Country from "../Country/Country.jsx";
 import Pagination from "../Pagination/Pagination";
@@ -29,7 +29,7 @@ function Countries() {
         dispatch(Filter(type, page));
       }
 
-      if (path.slice(15, 21) === "Europa") {
+      if (path.slice(15, 21) === "Europe") {
         let page = path.slice(22);
         let type = path.slice(15, 21);
         dispatch(Filter(type, page));

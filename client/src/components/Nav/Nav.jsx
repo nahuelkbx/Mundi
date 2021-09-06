@@ -74,7 +74,7 @@ function Nav(props) {
         <option value="Africa">Africa</option>
         <option value="Oceania">Oceania</option>
         <option value="Asia">Asia</option>
-        <option value="Europe">Europa</option>
+        <option value="Europe">Europe</option>
       </select>
 
       <button onClick={() => props.history.push("/createactivity")}>

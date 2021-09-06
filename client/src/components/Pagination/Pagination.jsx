@@ -24,7 +24,7 @@ function Pagination(props) {
         props.history.push(`/home/filterby/${type}/${page}`);
       }
 
-      if (path.slice(15, 21) === "Europa") {
+      if (path.slice(15, 21) === "Europe") {
         let type = path.slice(15, 21);
         props.history.push(`/home/filterby/${type}/${page}`);
       }
