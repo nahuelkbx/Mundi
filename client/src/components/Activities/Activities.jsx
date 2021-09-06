@@ -28,7 +28,7 @@ function Activities() {
           />
         ))
       ) : (
-        <h1>No hay actividades creadas...</h1>
+        <h1>There isnt activities here...</h1>
       )}
     </div>
   );

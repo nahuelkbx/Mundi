@@ -12,24 +12,24 @@ function Nav(props) {
 
   function Ordenado(e) {
     if (e.target.value === "A-Z") {
-      return props.history.push(`/home/orderby/${e.target.value}`);
+      return props.history.push(`/home/orderby/${e.target.value}/1`);
     }
     if (e.target.value === "Z-A") {
-      return props.history.push(`/home/orderby/${e.target.value}`);
+      return props.history.push(`/home/orderby/${e.target.value}/1`);
     }
     if (e.target.value === "Asc") {
-      return props.history.push(`/home/orderby/${e.target.value}`);
+      return props.history.push(`/home/orderby/${e.target.value}/1`);
     }
     if (e.target.value === "Desc") {
-      return props.history.push(`/home/orderby/${e.target.value}`);
+      return props.history.push(`/home/orderby/${e.target.value}/1`);
     }
   }
 
   function Filtrado(e) {
     if (e.target.value === "home") {
-      return props.history.push(`/${e.target.value}`);
+      return props.history.push(`/${e.target.value}/1`);
     }
-    props.history.push(`/home/filterby/${e.target.value}`);
+    props.history.push(`/home/filterby/${e.target.value}/1`);
   }
 
   function handleOnChange(e) {
@@ -39,11 +39,12 @@ function Nav(props) {
   }
 
   function searchActivity(e) {
-    props.history.push(`/home/activity/${e.target.value}`);
+    props.history.push(`/home/activity/${e.target.value}/1`);
   }
 
   return (
     <div>
+      <button onClick={() => props.history.push("/home/1")}>HOME</button>
       <select name="selectBox3" onChange={(e) => searchActivity(e)}>
         <option value="summer">Summer</option>
         <option value="winter">Winter</option>

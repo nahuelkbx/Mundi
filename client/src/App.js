@@ -14,17 +14,21 @@ function App() {
 
       <Route exact path="/" component={Landing} />
 
-      <Route exact path="/home" component={Countries} />
+      <Route exact path="/home/:page" component={Countries} />
 
       <Route exact path="/countryDetail/:id" component={CountriesDetails} />
 
       <Route
         exact
-        path="/home/filterby/:continent"
+        path="/home/filterby/:continent/:page"
         render={() => <Countries />}
       />
 
-      <Route exact path="/home/orderby/:order" render={() => <Countries />} />
+      <Route
+        exact
+        path="/home/orderby/:order/:page"
+        render={() => <Countries />}
+      />
 
       <Route exact path="/home/search/:country" render={() => <Countries />} />
 

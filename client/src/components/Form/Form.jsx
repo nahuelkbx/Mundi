@@ -83,7 +83,9 @@ function Form(props) {
 
   return (
     <div>
-      <button onClick={() => props.history.push("/home")}>Back to home</button>
+      <button onClick={() => props.history.push("/home/1")}>
+        Back to home
+      </button>
       <br></br>
       <form onSubmit={(e) => onSubmit(e)}>
         <input

@@ -1,7 +1,9 @@
 import React from "react";
 import { Order, Filter, getCountry, searchName } from "../../actions/index";
 import { useSelector, useDispatch } from "react-redux";
-export default function Pagination() {
+import { withRouter } from "react-router";
+
+function Pagination(props) {
   const pages = useSelector((state) => state.country.count);
   const dispatch = useDispatch();
   let totalPages = [];
@@ -12,15 +14,46 @@ export default function Pagination() {
 
   function ChangePage(page) {
     if (path.slice(6, 12) === "filter") {
-      let res = path.slice(15);
-      dispatch(Filter(res, page));
+      if (path.slice(15, 23) === "Americas") {
+        let type = path.slice(15, 23);
+        props.history.push(`/home/filterby/${type}/${page}`);
+      }
+
+      if (path.slice(15, 21) === "Africa") {
+        let type = path.slice(15, 21);
+        props.history.push(`/home/filterby/${type}/${page}`);
+      }
+
+      if (path.slice(15, 21) === "Europa") {
+        let type = path.slice(15, 21);
+        props.history.push(`/home/filterby/${type}/${page}`);
+      }
+
+      if (path.slice(15, 22) === "Oceania") {
+        let type = path.slice(15, 22);
+        props.history.push(`/home/filterby/${type}/${page}`);
+      }
+      if (path.slice(15, 19) === "Asia") {
+        let type = path.slice(15, 19);
+        props.history.push(`/home/filterby/${type}/${page}`);
+      }
     }
     if (path.slice(6, 11) === "order") {
-      let res = path.slice(14);
-      dispatch(Order(res, page));
+      if (
+        path.slice(14, 17) === "A-Z" ||
+        path.slice(14, 17) === "Z-A" ||
+        path.slice(14, 17) === "Asc"
+      ) {
+        let type = path.slice(14, 17);
+        props.history.push(`/home/orderby/${type}/${page}`);
+      }
+      if (path.slice(14, 18) === "Desc") {
+        let type = path.slice(14, 18);
+        props.history.push(`/home/orderby/${type}/${page}`);
+      }
     }
-    if (path.slice(1) === "home") {
-      dispatch(getCountry(page));
+    if (path.length <= 8) {
+      props.history.push(`/home/${page}`);
     }
     if (path.slice(6, 12) === "search") {
       let res = path.slice(13);
@@ -39,3 +72,4 @@ export default function Pagination() {
     </div>
   );
 }
+export default withRouter(Pagination);

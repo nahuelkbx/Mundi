@@ -12,14 +12,55 @@ function Countries() {
   let path = window.location.pathname;
 
   useEffect(() => {
-    if (path.slice(1) === "home") {
-      dispatch(getCountry(1));
+    if (path.length <= 8) {
+      let page = path.slice(6);
+      dispatch(getCountry(page));
     }
     if (path.slice(6, 12) === "filter") {
-      dispatch(Filter(path.slice(15), 1));
+      if (path.slice(15, 23) === "Americas") {
+        let page = path.slice(24);
+        let type = path.slice(15, 23);
+        dispatch(Filter(type, page));
+      }
+
+      if (path.slice(15, 21) === "Africa") {
+        let page = path.slice(22);
+        let type = path.slice(15, 21);
+        dispatch(Filter(type, page));
+      }
+
+      if (path.slice(15, 21) === "Europa") {
+        let page = path.slice(22);
+        let type = path.slice(15, 21);
+        dispatch(Filter(type, page));
+      }
+
+      if (path.slice(15, 22) === "Oceania") {
+        let page = path.slice(23);
+        let type = path.slice(15, 22);
+        dispatch(Filter(type, page));
+      }
+      if (path.slice(15, 19) === "Asia") {
+        let page = path.slice(20);
+        let type = path.slice(15, 19);
+        dispatch(Filter(type, page));
+      }
     }
     if (path.slice(6, 11) === "order") {
-      dispatch(Order(path.slice(14), 1));
+      if (
+        path.slice(14, 17) === "A-Z" ||
+        path.slice(14, 17) === "Z-A" ||
+        path.slice(14, 17) === "Asc"
+      ) {
+        let page = path.slice(18);
+        let type = path.slice(14, 17);
+        dispatch(Order(type, page));
+      }
+      if (path.slice(14, 18) === "Desc") {
+        let page = path.slice(19);
+        let type = path.slice(14, 18);
+        dispatch(Order(type, page));
+      }
     }
   }, [path]);
   return (
