@@ -38,7 +38,9 @@ function rootReducer(state = initialState, action) {
     case "SEARCH_ACTIVITY": {
       return {
         ...state,
-        activities: action.payload.data,
+        activities: action.payload[0].filter(
+          (c) => c.season === action.payload[1]
+        ),
       };
     }
     case "POST_ACTIVITY": {

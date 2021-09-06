@@ -27,25 +27,25 @@ router.get("/order/:season", async (req, res) => {
 
 router.post("/activity", async (req, res) => {
   const { name, difficulty, duration, season, countryID } = req.body;
-  if (name && difficulty && duration && season) {
+  if (name && difficulty && duration && season && countryID) {
     var actividad = await Activity.create({
       name,
       difficulty,
       season,
       duration,
     });
-  }
-
-  if (countryID.length === 1) {
-    if (actividad) {
-      return res.json(await actividad.addCountry(countryID));
+    if (countryID.length === 1) {
+      if (actividad) {
+        return res.json(await actividad.addCountry(countryID));
+      }
+    }
+    if (countryID.length > 1) {
+      if (actividad) {
+        return res.json(await actividad.addCountries(countryID));
+      }
     }
   }
-  if (countryID.length > 1) {
-    if (actividad) {
-      return res.json(await actividad.addCountries(countryID));
-    }
-  }
+  res.send({ error: "Faltan parametros" });
 });
 
 module.exports = router;

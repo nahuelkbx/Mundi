@@ -84,16 +84,28 @@ export function searchName(name, page) {
       });
   };
 }
+
+// export function searchActivity(season) {
+//   return function (dispatch) {
+//     return axios
+//       .get("http://localhost:3001/api/activities/order/" + season)
+//       .then((act) => {
+//         dispatch({
+//           type: "SEARCH_ACTIVITY",
+//           payload: act,
+//         });
+//       });
+//   };
+// }
+
 export function searchActivity(season) {
   return function (dispatch) {
-    return axios
-      .get("http://localhost:3001/api/activities/order/" + season)
-      .then((act) => {
-        dispatch({
-          type: "SEARCH_ACTIVITY",
-          payload: act,
-        });
+    return axios.get("http://localhost:3001/api/activities").then((act) => {
+      dispatch({
+        type: "SEARCH_ACTIVITY",
+        payload: [act.data, season],
       });
+    });
   };
 }
 

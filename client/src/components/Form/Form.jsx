@@ -12,7 +12,7 @@ function Form(props) {
   const [state, setState] = useState({
     name: "",
     difficulty: "",
-    duration: 0,
+    duration: 10,
     season: "",
     countryID: [],
   });
@@ -61,19 +61,29 @@ function Form(props) {
 
   function onSubmit(e) {
     e.preventDefault();
-    dispatch(postActivity(state));
-    alert("Success!");
-    setState({
-      name: "",
-      difficulty: "",
-      duration: 0,
-      season: "",
-      countryID: [],
-    });
-    props.history.push("/home");
+    if (
+      state.difficulty !== "" &&
+      state.season !== "" &&
+      state.countryID.length > 0
+    ) {
+      dispatch(postActivity(state));
+      alert("Success!");
+      setState({
+        name: "",
+        difficulty: "",
+        duration: 0,
+        season: "",
+        countryID: [],
+      });
+      props.history.push("/home");
+    } else {
+      alert("All forms required");
+    }
   }
+
   return (
     <div>
+      <button onClick={() => props.history.push("/home")}>Back to home</button>
       <br></br>
       <form onSubmit={(e) => onSubmit(e)}>
         <input
@@ -81,6 +91,7 @@ function Form(props) {
           name="actividad"
           placeholder="Add name"
           onChange={(e) => onChange(e)}
+          required
         />
         <br />
         <input
@@ -112,6 +123,7 @@ function Form(props) {
         />
         Fall <br />
         <select onChange={(e) => onCheckDifficulty(e)}>
+          <option value="">Add Difficulty</option>
           <option value="1">1</option>
           <option value="2">2</option>
           <option value="3">3</option>
@@ -121,7 +133,7 @@ function Form(props) {
         <br />
         <input
           type="range"
-          min={0}
+          min={10}
           max={120}
           step={10}
           name="duration"
@@ -129,7 +141,10 @@ function Form(props) {
           onChange={(e) => onDuration(e)}
         />
         <br />
+        <label>{state.duration} minutes...</label>
+        <br />
         <select onChange={(e) => onSelect(e)}>
+          <option value="">Add Country</option>
           {country.rows &&
             country.rows.map((c) => (
               <option value={c.id} key={c.id}>
@@ -137,6 +152,12 @@ function Form(props) {
               </option>
             ))}
         </select>
+        <br />
+        {state.countryID.length >= 1 ? (
+          state.countryID.map((c) => c + " ")
+        ) : (
+          <label>There is not selected countries yet</label>
+        )}
         <br />
         <input type="submit" />
       </form>

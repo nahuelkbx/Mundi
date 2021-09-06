@@ -17,7 +17,7 @@ function Activities() {
 
   return (
     <div>
-      {state.activities &&
+      {state.activities.length > 1 ? (
         state.activities.map((c) => (
           <Activity
             key={c.name}
@@ -26,7 +26,10 @@ function Activities() {
             duration={c.duration}
             season={c.season}
           />
-        ))}
+        ))
+      ) : (
+        <h1>No hay actividades creadas...</h1>
+      )}
     </div>
   );
 }
