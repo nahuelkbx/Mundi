@@ -1,8 +1,11 @@
 import React from "react";
-import { withRouter } from "react-router-dom";
+import { withRouter, Link } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchName } from "../../actions";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faGlobeAmericas, faSearch } from "@fortawesome/free-solid-svg-icons";
+import styles from "./Nav.module.css";
 
 function Nav(props) {
   const dispatch = useDispatch();
@@ -43,32 +46,56 @@ function Nav(props) {
   }
 
   return (
-    <div>
-      <button onClick={() => props.history.push("/home/1")}>HOME</button>
-      <select name="selectBox3" onChange={(e) => searchActivity(e)}>
+    <div className={styles.main}>
+      <Link to="/home/1">
+        <a className={styles.logo}>
+          <FontAwesomeIcon icon={faGlobeAmericas} />
+        </a>
+      </Link>
+
+      <form
+        action=""
+        onSubmit={(e) => handleOnChange(e)}
+        className={styles.form}
+      >
+        <input
+          type="text"
+          placeholder="Find countries..."
+          onChange={(e) => setState({ title: e.target.value })}
+          className={styles.inputsearch}
+        />
+        <button className={styles.search}>
+          <FontAwesomeIcon icon={faSearch} />
+        </button>
+      </form>
+
+      <select
+        name="selectBox3"
+        onChange={(e) => searchActivity(e)}
+        className={styles.temporada}
+      >
         <option value="summer">Summer</option>
         <option value="winter">Winter</option>
         <option value="spring">Spring</option>
         <option value="fall">Fall</option>
       </select>
 
-      <form action="" onSubmit={(e) => handleOnChange(e)}>
-        <input
-          type="text"
-          placeholder="Search"
-          onChange={(e) => setState({ title: e.target.value })}
-        />
-        <input type="submit" value="Search" />
-      </form>
-
-      <select name="selectBox" onChange={(e) => Ordenado(e)}>
+      <select
+        name="selectBox"
+        onChange={(e) => Ordenado(e)}
+        className={styles.order}
+      >
         <option value="A-Z">A-Z</option>
         <option value="Z-A">Z-A</option>
         <option value="Asc">PopulationUP</option>
         <option value="Desc">PopulationDOWN</option>
       </select>
 
-      <select name="selectBox2" onChange={(e) => Filtrado(e)}>
+      <select
+        name="selectBox2"
+        onChange={(e) => Filtrado(e)}
+        className={styles.filter}
+      >
         <option value="home">All</option>
         <option value="Americas">Americas</option>
         <option value="Africa">Africa</option>

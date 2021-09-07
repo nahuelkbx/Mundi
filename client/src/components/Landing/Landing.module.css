@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap");
+
+.principal {
+  background-image: url(fondo.jpg);
+  height: 100vh;
+  width: 100%;
+  background-size: 100% 100%;
+}
+
+.btn {
+  margin-top: 38rem;
+  border-radius: 5px;
+  font-size: 1.2rem;
+
+  /* background-color: #ffffff; */
+  font-family: "Mulish", sans-serif;
+  --background-color: #000000;
+  --light-theme: #ffffff;
+}
+
+.btn:hover {
+  color: #393e46;
+  background-color: whitesmoke;
+  cursor: pointer;
+}
