@@ -2,6 +2,7 @@ import React from "react";
 import { Order, Filter, getCountry, searchName } from "../../actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import { withRouter } from "react-router";
+import styles from "./Pagination.module.css";
 
 function Pagination(props) {
   const pages = useSelector((state) => state.country.count);
@@ -11,6 +12,7 @@ function Pagination(props) {
   for (let i = 0; i < pages / 10; i++) {
     totalPages.push(pages[i]);
   }
+  var pagina = path.split("/").at(-1);
 
   function ChangePage(page) {
     if (path.slice(6, 12) === "filter") {
@@ -62,10 +64,14 @@ function Pagination(props) {
   }
 
   return (
-    <div>
+    <div className={styles.conteinermain}>
       {totalPages &&
         totalPages.map((page, i) => (
-          <button key={i} onClick={() => ChangePage(i + 1)}>
+          <button
+            key={i}
+            onClick={() => ChangePage(i + 1)}
+            className={i + 1 == pagina ? styles.active : styles.btn}
+          >
             {i + 1}
           </button>
         ))}

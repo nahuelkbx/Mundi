@@ -1,9 +1,51 @@
 import React from "react";
+import styles from "./Footer.module.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faLinkedin,
+  faGithubSquare,
+  faInstagramSquare,
+  faTwitterSquare,
+} from "@fortawesome/free-brands-svg-icons";
 
 function Footer() {
   return (
-    <div>
-      <h1>FOOTER</h1>
+    <div className={styles.footermain}>
+      <a
+        href="https://github.com/nahuelkbx"
+        className={styles.github}
+        target="_BLANK"
+      >
+        <FontAwesomeIcon icon={faGithubSquare} />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/nahuelmonserrat/"
+        className={styles.linkedin}
+        target="_BLANK"
+      >
+        <FontAwesomeIcon icon={faLinkedin} />
+      </a>
+      <a
+        href="https://www.linkedin.com/in/nahuelmonserrat/"
+        className={styles.name}
+        target="_BLANK"
+      >
+        <h4>Nahuel Monserrat</h4>
+      </a>
+      <a
+        href="https://www.instagram.com/"
+        className={styles.ig}
+        target="_BLANK"
+      >
+        <FontAwesomeIcon icon={faInstagramSquare} />
+      </a>
+      <a
+        href="https://twitter.com/home"
+        className={styles.twitter}
+        target="_BLANK"
+      >
+        <FontAwesomeIcon icon={faTwitterSquare} />
+      </a>
     </div>
   );
 }

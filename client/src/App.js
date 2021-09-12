@@ -40,7 +40,7 @@ function App() {
 
       <Route exact path="/createactivity" component={Form} />
 
-      <Route path="/home" component={Footer} />
+      <Route path="/" component={Footer} />
     </div>
   );
 }

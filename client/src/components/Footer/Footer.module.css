@@ -1,0 +1,36 @@
+.footermain {
+  background-color: #0d7377;
+  height: 3.1rem;
+  display: flex;
+  align-items: center;
+}
+
+.twitter {
+  color: white;
+  margin-left: 1rem;
+  font-size: 2rem;
+}
+
+.ig {
+  color: white;
+  margin-left: 41rem;
+  font-size: 2rem;
+}
+
+.github {
+  color: white;
+  margin-left: 2rem;
+  font-size: 2rem;
+}
+
+.linkedin {
+  color: white;
+  font-size: 2rem;
+  margin-left: 1rem;
+}
+
+.name {
+  margin-left: 37rem;
+  text-decoration: none;
+  color: white;
+}

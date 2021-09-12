@@ -13,12 +13,16 @@ function Country({
 }) {
   return (
     <div className={styles.contenedor}>
-      <ul>
-        <li>
-          <Link to={`/countryDetail/${id}`}>{name}</Link>
-          <img src={`${img}`} alt="" className={styles.fotos} />
-        </li>
-      </ul>
+      <Link to={`/countryDetail/${id}`}>
+        <div className={styles.card}>
+          <div className={styles.containerfoto}>
+            <img src={`${img}`} alt="" className={styles.foto} />
+          </div>
+          <span className={styles.name}>{name}</span>
+          <span className={styles.continente}>Continent: {continent}</span>
+          <span className={styles.capital}>Capital: {capital}</span>
+        </div>
+      </Link>
     </div>
   );
 }

@@ -1,9 +1,13 @@
 import React from "react";
-
-function Activity({ name }) {
+import styles from "./Activity.module.css";
+function Activity({ name, duration, season, difficulty, id }) {
   return (
-    <div>
-      <h1>{name}</h1>
+    <div className={styles.card}>
+      <h1> {name}</h1>
+      <label>Duration: {duration}</label>
+      <label>Season: {season}</label>
+      <label>Difficulty: {difficulty}</label>
+      <label>ID: {id}</label>
     </div>
   );
 }

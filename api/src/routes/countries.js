@@ -9,7 +9,6 @@ router.get("/", async (req, res) => {
     {
       if (page) {
         const DBpais = await Country.findAndCountAll({
-          include: [Activity],
           order: [["name", "ASC"]],
           offset: (page - 1) * 10,
           limit: 10,
@@ -17,7 +16,6 @@ router.get("/", async (req, res) => {
         res.status(200).send(DBpais);
       } else if (!page) {
         const DBpais = await Country.findAndCountAll({
-          include: [Activity],
           order: [["name", "ASC"]],
         });
         res.status(200).send(DBpais);

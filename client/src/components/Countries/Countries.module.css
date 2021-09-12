@@ -1,0 +1,56 @@
+@import url("https://fonts.googleapis.com/css2?family=Kaisei+HarunoUmi&display=swap");
+
+.formConteiner {
+  display: flex;
+  justify-content: end;
+  padding-right: 5rem;
+}
+
+.temporada {
+  width: 7rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  background-color: #018790;
+  color: white;
+  font-family: "Kaisei HarunoUmi", serif;
+}
+
+.order {
+  width: 6rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  background-color: #018790;
+  color: white;
+  font-family: "Kaisei HarunoUmi", serif;
+}
+
+.filter {
+  width: 6rem;
+  text-align: center;
+  border-radius: 0.2rem;
+  cursor: pointer;
+  margin-top: 0.6rem;
+  height: 1.5rem;
+  margin-right: 0.5rem;
+  background-color: #018790;
+  color: white;
+  font-family: "Kaisei HarunoUmi", serif;
+}
+
+.conteinercards {
+  margin-top: 0.1rem;
+  padding: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  border-radius: 0.3rem;
+  height: 80.8vh;
+  width: 100%;
+}
