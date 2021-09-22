@@ -110,7 +110,6 @@ export function searchActivity(season) {
 }
 
 export function postActivity(payload) {
-  console.log(payload);
   return async function (dispatch) {
     const response = await axios.post(
       "http://localhost:3001/api/activities/activity",

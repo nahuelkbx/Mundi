@@ -76,7 +76,7 @@ function Countries(props) {
         dispatch(Order(type, page));
       }
     }
-  }, [path]);
+  }, [path, dispatch]);
   return (
     <div className={styles.contenedor}>
       <div className={styles.formConteiner}>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Order, Filter, getCountry, searchName } from "../../actions/index";
+import { searchName } from "../../actions/index";
 import { useSelector, useDispatch } from "react-redux";
 import { withRouter } from "react-router";
 import styles from "./Pagination.module.css";
@@ -70,7 +70,7 @@ function Pagination(props) {
           <button
             key={i}
             onClick={() => ChangePage(i + 1)}
-            className={i + 1 == pagina ? styles.active : styles.btn}
+            className={i + 1 === parseInt(pagina) ? styles.active : styles.btn}
           >
             {i + 1}
           </button>

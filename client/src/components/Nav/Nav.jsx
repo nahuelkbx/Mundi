@@ -1,5 +1,5 @@
 import React from "react";
-import { withRouter, Link } from "react-router-dom";
+import { withRouter } from "react-router-dom";
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { searchName } from "../../actions";

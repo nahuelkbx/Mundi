@@ -2,13 +2,18 @@ const { Router } = require("express");
 const router = Router();
 const { Country, Activity } = require("../db.js");
 
-router.get("/", async (req, res) => {
-  const searchAct = await Activity.findAll();
-  if (searchAct.length === 0) {
-    return res.status(404).json({ error: "No hay actividades guardadas" });
-  } else {
-    return res.status(200).json(searchAct);
-  }
+router.get("/", (req, res) => {
+  Activity.findAll().then((res) => {
+    if (res) {
+      res.status(200).json(searchAct);
+    }
+    res.status(404).json({ error: "No hay actividades guardadas" });
+  });
+  // if (searchAct.length === 0) {
+  //   return res.status(404).json({ error: "No hay actividades guardadas" });
+  // } else {
+  //   return res.status(200).json(searchAct);
+  // }
 });
 
 router.get("/order/:season", async (req, res) => {

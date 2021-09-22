@@ -1,5 +1,4 @@
 import "./App.css";
-import Landing from "./components/Landing/Landing.jsx";
 import Nav from "./components/Nav/Nav";
 import Form from "./components/Form/Form.jsx";
 import Footer from "./components/Footer/Footer";
@@ -11,8 +10,6 @@ function App() {
   return (
     <div className="App">
       <Route path="/home" component={Nav} />
-
-      <Route exact path="/" component={Landing} />
 
       <Route exact path="/home/:page" component={Countries} />
 

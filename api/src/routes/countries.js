@@ -39,7 +39,7 @@ router.get("/filter/:continent/:page", async (req, res) => {
     });
     return res.status(200).json(actividad);
   }
-  res.status(404).json({ error: "Debe seleccionar una temporada" });
+  res.status(404).json({ error: "Debe seleccionar una continente" });
 });
 
 router.get("/order/:population/:page", async (req, res) => {

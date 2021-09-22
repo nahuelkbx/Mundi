@@ -14,7 +14,7 @@ function Activities() {
     if (path.slice(6, 14) === "activity") {
       dispatch(searchActivity(path.slice(15)));
     }
-  }, [path]);
+  }, [path, dispatch]);
 
   return (
     <div className={styles.container}>

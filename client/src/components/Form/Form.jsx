@@ -28,7 +28,7 @@ function Form(props) {
 
   useEffect(() => {
     dispatch(getCountry());
-  }, []);
+  }, [dispatch]);
 
   function onChange(e) {
     setState({

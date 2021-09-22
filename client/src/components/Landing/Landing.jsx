@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../Landing/Landing.module.css";
-import fondo from "./fondo2.jpg";
+
 import { Link } from "react-router-dom";
 
 export default function Landing() {

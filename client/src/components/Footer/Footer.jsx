@@ -15,6 +15,7 @@ function Footer() {
         href="https://github.com/nahuelkbx"
         className={styles.github}
         target="_BLANK"
+        rel="noreferrer"
       >
         <FontAwesomeIcon icon={faGithubSquare} />
       </a>
@@ -22,6 +23,7 @@ function Footer() {
         href="https://www.linkedin.com/in/nahuelmonserrat/"
         className={styles.linkedin}
         target="_BLANK"
+        rel="noreferrer"
       >
         <FontAwesomeIcon icon={faLinkedin} />
       </a>
@@ -29,6 +31,7 @@ function Footer() {
         href="https://www.linkedin.com/in/nahuelmonserrat/"
         className={styles.name}
         target="_BLANK"
+        rel="noreferrer"
       >
         <h4>Nahuel Monserrat</h4>
       </a>
@@ -36,6 +39,7 @@ function Footer() {
         href="https://www.instagram.com/"
         className={styles.ig}
         target="_BLANK"
+        rel="noreferrer"
       >
         <FontAwesomeIcon icon={faInstagramSquare} />
       </a>
@@ -43,6 +47,7 @@ function Footer() {
         href="https://twitter.com/home"
         className={styles.twitter}
         target="_BLANK"
+        rel="noreferrer"
       >
         <FontAwesomeIcon icon={faTwitterSquare} />
       </a>
