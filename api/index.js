@@ -24,16 +24,16 @@ const axios = require("axios");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async () => {
-  const paises = await axios.get("https://restcountries.eu/rest/v2/all");
+  const paises = await axios.get("https://restcountries.com/v2/all");
   if (paises.data) {
     for (let i = 0; i < paises.data.length; i++) {
       await Country.create({
         id: paises.data[i].alpha3Code,
         name: paises.data[i].name,
-        image: paises.data[i].flag,
-        continent: paises.data[i].region,
+        image: paises.data[i].flags[1],
+        continent: paises.data[i].continent,
         capital: paises.data[i].capital,
-        subregion: paises.data[i].subregion,
+        subregion: paises.data[i].region,
         area: paises.data[i].area,
         population: paises.data[i].population,
       });
