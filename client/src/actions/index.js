@@ -1,48 +1,42 @@
 import axios from "axios";
-
+const { URL } = process.env;
 export function getCountry(page) {
   if (page) {
     return function (dispatch) {
-      return axios
-        .get("http://localhost:3001/api/countries/?page=" + page)
-        .then((country) => {
-          dispatch({
-            type: "GET_COUNTRY",
-            payload: country,
-          });
+      return axios.get(`${URL}/api/countries/?page=` + page).then((country) => {
+        dispatch({
+          type: "GET_COUNTRY",
+          payload: country,
         });
+      });
     };
   } else if (!page) {
     return function (dispatch) {
-      return axios
-        .get("http://localhost:3001/api/countries/")
-        .then((country) => {
-          dispatch({
-            type: "GET_COUNTRY",
-            payload: country,
-          });
+      return axios.get(`${URL}/api/countries/`).then((country) => {
+        dispatch({
+          type: "GET_COUNTRY",
+          payload: country,
         });
+      });
     };
   }
 }
 
 export function getDetails(id) {
   return function (dispatch) {
-    return axios
-      .get("http://localhost:3001/api/countries/searchby/" + id)
-      .then((country) => {
-        dispatch({
-          type: "GET_DETAILS",
-          payload: country,
-        });
+    return axios.get(`${URL}api/countries/searchby/` + id).then((country) => {
+      dispatch({
+        type: "GET_DETAILS",
+        payload: country,
       });
+    });
   };
 }
 
 export function Order(order, page) {
   return function (dispatch) {
     return axios
-      .get("http://localhost:3001/api/countries/order/" + order + "/" + page)
+      .get(`${URL}api/countries/order/` + order + "/" + page)
       .then((country) => {
         dispatch({
           type: "ORDER",
@@ -55,9 +49,7 @@ export function Order(order, page) {
 export function Filter(continent, page) {
   return function (dispatch) {
     return axios
-      .get(
-        "http://localhost:3001/api/countries/filter/" + continent + "/" + page
-      )
+      .get(`${URL}/api/countries/filter/` + continent + "/" + page)
       .then((country) => {
         dispatch({
           type: "FILTER",
@@ -70,12 +62,7 @@ export function Filter(continent, page) {
 export function searchName(name, page) {
   return function (dispatch) {
     return axios
-      .get(
-        "http://localhost:3001/api/countries/find/name?name=" +
-          name +
-          "&page=" +
-          page
-      )
+      .get(`${URL}/api/countries/find/name?name=` + name + "&page=" + page)
       .then((name) => {
         dispatch({
           type: "SEARCH_NAME",
@@ -85,22 +72,9 @@ export function searchName(name, page) {
   };
 }
 
-// export function searchActivity(season) {
-//   return function (dispatch) {
-//     return axios
-//       .get("http://localhost:3001/api/activities/order/" + season)
-//       .then((act) => {
-//         dispatch({
-//           type: "SEARCH_ACTIVITY",
-//           payload: act,
-//         });
-//       });
-//   };
-// }
-
 export function searchActivity(season) {
   return function (dispatch) {
-    return axios.get("http://localhost:3001/api/activities").then((act) => {
+    return axios.get(`${URL}/api/activities`).then((act) => {
       dispatch({
         type: "SEARCH_ACTIVITY",
         payload: [act.data, season],
@@ -112,7 +86,7 @@ export function searchActivity(season) {
 export function postActivity(payload) {
   return async function (dispatch) {
     const response = await axios.post(
-      "http://localhost:3001/api/activities/activity",
+      `${URL}/api/activities/activity`,
       payload
     );
     return response;
