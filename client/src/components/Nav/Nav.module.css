@@ -1,7 +1,8 @@
 .main {
   display: flex;
-  justify-content: flex-end;
-  padding: 0.2rem;
+  justify-content: space-around;
+  width: 100%;
+
   background-color: #0d7377;
   border-radius: 2px;
   position: sticky;
@@ -9,7 +10,6 @@
 }
 
 .logo {
-  margin-right: 31rem;
   font-size: 1.8rem;
   text-decoration: none;
   color: white;
@@ -23,11 +23,12 @@
   display: flex;
   padding-top: 0.4rem;
   padding-right: 1rem;
-  margin-right: 27rem;
+
   height: 1.5rem;
 }
 
 .inputsearch {
+  width: 60%;
   border-radius: 8rem;
   margin-right: 0.7rem;
   padding-left: 0.5rem;
@@ -52,7 +53,6 @@
   padding-top: 0.4rem;
   text-decoration: none;
   font-size: 1.2rem;
-  margin-right: 6rem;
 }
 
 .btn {
