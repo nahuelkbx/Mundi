@@ -24,23 +24,24 @@ const axios = require("axios");
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(async () => {
-  const paises = await axios.get("https://restcountries.com/v2/all");
-  if (paises.data) {
-    for (let i = 0; i < paises.data.length; i++) {
-      await Country.create({
-        id: paises.data[i].alpha3Code,
-        name: paises.data[i].name,
-        image: paises.data[i].flags[1],
-        continent: paises.data[i].continent,
-        capital: paises.data[i].capital,
-        subregion: paises.data[i].region,
-        area: paises.data[i].area,
-        population: paises.data[i].population,
-      });
-    }
+  const countriesApi = await axios.get("https://restcountries.com/v3/all");
+  let countries = countriesApi.data;
+  if (countries) {
+    countries = countries.map((country) => {
+      return {
+        id: country.cca3,
+        name: country.name.common,
+        image: country.flags[0],
+        region: country.region,
+        continent: country.continents[0],
+        capital: country.capital ? country.capital[0] : null,
+        subregion: country.subregion,
+        area: country.area,
+        demonyms: country.demonyms ? country.demonyms.eng.m : null,
+      };
+    });
   }
-  await Country.bulkCreate(paises);
-
+  await Country.bulkCreate(countries);
   server.listen(3001, () => {
     console.log("%s listening at 3001"); // eslint-disable-line no-console
   });
