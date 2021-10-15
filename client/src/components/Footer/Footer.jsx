@@ -7,9 +7,9 @@ import {
   faInstagramSquare,
   faTwitterSquare,
 } from "@fortawesome/free-brands-svg-icons";
-
+let path = window.location.pathname;
 function Footer() {
-  return (
+  return path === "/" ? null : (
     <div className={styles.footermain}>
       <a
         href="https://github.com/nahuelkbx"

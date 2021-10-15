@@ -7,7 +7,9 @@ export default function Landing() {
   return (
     <div className={styles.principal}>
       <Link to="/home/1">
-        <button className={styles.btn}> Countries </button>
+        <span>
+          <a href="#"></a>
+        </span>
       </Link>
     </div>
   );

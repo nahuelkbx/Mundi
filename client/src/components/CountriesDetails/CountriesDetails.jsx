@@ -65,22 +65,26 @@ function CountriesDetails(props) {
               </label>
               <label className={styles.id}>ID: {detail.resultado.id}</label>
             </div>
-            {detail.resultado.activities.length > 0
-              ? detail.resultado.activities.map((c) => (
-                  <div key={c.id} className={styles.activities}>
-                    <h1 className={styles.title}>Activities </h1>
-                    <label className={styles.namea}>Name: {c.name}</label>
-                    <label className={styles.seasona}>Season: {c.season}</label>
-                    <label className={styles.durationa}>
-                      Duration: {c.duration}
-                    </label>
-                    <label className={styles.difficultya}>
-                      Difficulty: {c.difficulty}
-                    </label>
-                    <label className={styles.ida}>ID: {c.id}</label>
-                  </div>
-                ))
-              : "This country doesn't have any activity."}
+            {detail.resultado.activities.length > 0 ? (
+              detail.resultado.activities.map((c) => (
+                <div key={c.id} className={styles.activities}>
+                  <h1 className={styles.title}>Activities </h1>
+                  <label className={styles.namea}>Name: {c.name}</label>
+                  <label className={styles.seasona}>Season: {c.season}</label>
+                  <label className={styles.durationa}>
+                    Duration: {c.duration}
+                  </label>
+                  <label className={styles.difficultya}>
+                    Difficulty: {c.difficulty}
+                  </label>
+                  <label className={styles.ida}>ID: {c.id}</label>
+                </div>
+              ))
+            ) : (
+              <label className={styles.activitiesNull}>
+                This country doesn't have any activity.
+              </label>
+            )}
           </div>
         </div>
       ) : (

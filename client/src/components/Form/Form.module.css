@@ -1,13 +1,13 @@
 .main {
   width: 100%;
-  height: 100%;
+  height: 85%;
   background-color: #dddddd;
 }
 
 .container {
   display: flex;
   width: 100%;
-  height: 430px;
+  height: 415.4px;
   justify-content: center;
   padding-bottom: 13rem;
 }

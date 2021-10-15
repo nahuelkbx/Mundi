@@ -6,10 +6,12 @@ import Activities from "./components/Activities/Activities";
 import { Route } from "react-router-dom";
 import CountriesDetails from "./components/CountriesDetails/CountriesDetails";
 import Countries from "./components/Countries/Countries";
+import Landing from "./components/Landing/Landing.jsx";
 function App() {
   return (
     <div className="App">
       <Route path="/home" component={Nav} />
+      <Route exact path="/" component={Landing} />
 
       <Route exact path="/home/:page" component={Countries} />
 

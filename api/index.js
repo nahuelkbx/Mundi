@@ -34,6 +34,7 @@ conn.sync({ force: true }).then(async () => {
         image: country.flags[0],
         region: country.region,
         continent: country.continents[0],
+        population: country.population,
         capital: country.capital ? country.capital[0] : null,
         subregion: country.subregion,
         area: country.area,
